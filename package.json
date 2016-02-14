@@ -1,0 +1,16 @@
+{
+  "name": "shared-image-upload",
+  "version": "1.0.0",
+  "description": "Upload an image from one device and view it on another in \"real time\"",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "James J. Womack <james@womack.io>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "4.13.4",
+    "socket.io": "1.4.5",
+    "socketio-file-upload": "0.4.4"
+  }
+}
