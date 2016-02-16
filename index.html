@@ -1,31 +1,21 @@
 <html>
 <head>
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="/siofu/client.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const socket = io.connect()
-      const uploader = new SocketIOFileUpload(socket)
-      uploader.listenOnInput(document.getElementById('siofu_input'))
-      socket.addEventListener('show', e => {
-        const file = e.file
-
-        if (!file) return
-
-        const name = file.name
-
-        const preview = document.querySelector('img')
-        preview.src = encodeURIComponent('/' + name)
-      })
-    })
-  </script>
+  <link rel="stylesheet" href="/css/index.css" />
 </head>
 <body>
-<section>
-<form>
-<label>Upload an image: <input type="file" id="siofu_input" name="siofu_input" /></label>
-</form>
+<section id="upload">
+  <label>Upload an image: <input type="file" id="siofu_input" name="siofu_input" /></label>
 </section>
-<section><img alt="preview" /></section>
+<section id="source">
+  <img alt="preview" src="" />
+</section>
+<section id="destination">
+  <canvas width="400" height="400" />
+</section>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/siofu/client.js"></script>
+<script src="/js/mirrors/local.js"></script>
+<script src="/js/mirrors/remote.js"></script>
+<script src="/js/application-initialization.js"></script>
 </body>
 </html>

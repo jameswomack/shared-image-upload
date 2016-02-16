@@ -13,6 +13,8 @@ app.get('/', function (req, res) {
   res.sendFile(Path.join(__dirname, 'index.html'))
 })
 
+
+app.use(express.static('static'))
 app.use(express.static('uploads'))
 
 io.on('connection', socket => {
