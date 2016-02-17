@@ -18,7 +18,7 @@
   Object.defineProperties(LocalMirror.prototype, {
     options : {
       get: function () {
-        return Object.freeze(Object.assign({ }, { useCache : false }, this.originalOptions))
+        return Object.freeze(Object.assign({ }, { useCache : true }, this.originalOptions))
       }
     },
 
@@ -31,10 +31,20 @@
     draw : {
       value : function () {
         if (this.shouldDraw) {
-          this.context.clearRect(0, 0, 400, 400)
-          this.context.setTransform(getRand(), getRand(), getRand(), getRand(), 400, 400)
-          this.context.drawImage(this.image, 0, 0)
-          this.previousSrc = this.image.src
+          this.context.clearRect(0, 0, this.context.canvas.width, this.context.canvas.height);
+          var height = 600;
+          var widthFactor = (this.image.height > height) ? this.image.height/height : 1;
+          this.context.drawImage(this.image, 0, 0, this.image.width, this.image.height, 0, 0, this.image.width / widthFactor, height);
+          this.previousSrc = this.image.src;
+
+          console.log(this.image.width)
+
+          const imageData = this.context.getImageData(0, 0,
+              this.context.canvas.width / widthFactor,
+              (this.context.canvas.height > height) ? height : this.context.canvas.height );
+          const hslValues = hslToColor(hslValuesFromContext(imageData));
+          circlePack('svg#circlePack', hslValues)
+
         }
       }
     }

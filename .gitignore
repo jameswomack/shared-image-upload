@@ -1,2 +1,2 @@
-/uploads/*.png
-/uploads/*.jpg
+uploads
+node_modules
