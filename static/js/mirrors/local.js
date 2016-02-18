@@ -33,14 +33,16 @@
         if (this.shouldDraw) {
           this.context.clearRect(0, 0, this.context.canvas.width, this.context.canvas.height);
           var height = 600;
-          var widthFactor = this.image.height/height;
-          this.context.drawImage(this.image, 0, 0, this.image.width, this.image.height, 0, 0, this.image.width / widthFactor, height);
+          var widthFactor = (this.image.height !== 0)? this.image.height/height : 1;
+          this.context.drawImage(this.image, 0, 0, this.image.width, this.image.height, 0, 0, parseInt(this.image.width / widthFactor), height);
           this.previousSrc = this.image.src;
 
+          // if (this.image.width !== 0){
+            const imageData = this.context.getImageData(0, 0, parseInt(this.image.width / widthFactor), height );
+            const hslValues = hslToColor(hslValuesFromContext(imageData));
+            circlePack('svg#circlePack', hslValues)
+          // }
 
-          const imageData = this.context.getImageData(0, 0, this.image.width / widthFactor, height );
-          const hslValues = hslToColor(hslValuesFromContext(imageData));
-          circlePack('svg#circlePack', hslValues)
 
         }
       }
