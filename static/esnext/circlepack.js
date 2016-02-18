@@ -1,4 +1,6 @@
 function circlePack(selectionID, data) {
+    var packChart, packG;
+
     d3.select(selectionID)
       .attr("height", 2400)
       .attr("width", 1200)
@@ -95,7 +97,7 @@ function circlePack(selectionID, data) {
         .style("text-anchor", "middle")
         .text(colorAuthority[packedIndex])
 
-        var packG = d3.select(selectionID).select("g." + colorAuthority[packedIndex]);
+        packG = d3.select(selectionID).select("g." + colorAuthority[packedIndex]);
 
         packG
         .selectAll("circle")

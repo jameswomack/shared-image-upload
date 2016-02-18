@@ -24,6 +24,7 @@ io.on('connection', socket => {
 
   uploader.on('saved', (o) => {
     io.emit('show', o)
+    socket.emit('show', o)
   })
 
   socket.on('disconnect', () =>
