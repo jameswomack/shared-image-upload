@@ -54,7 +54,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
   LocalMirror.create = function (options) {
     var m = LocalMirror(options);
-    m.onDrawOpportunity(m.draw.bind(m));
+    m.image.onload = m.draw.bind(m);
     return m;
   };
 

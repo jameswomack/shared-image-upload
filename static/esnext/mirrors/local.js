@@ -52,7 +52,7 @@
 
   LocalMirror.create = options => {
     const m = LocalMirror(options)
-    m.onDrawOpportunity(m.draw.bind(m))
+    m.image.onload = m.draw.bind(m)
     return m
   }
 
