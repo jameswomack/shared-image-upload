@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel ./static/esnext -d ./static/js",
     "watch": "babel --watch ./static/esnext -d ./static/js",
-    "start": "npm run watch && node index.js"
+    "start": "node index.js & npm run watch"
   },
   "author": "James J. Womack <james@womack.io>",
   "license": "MIT",
