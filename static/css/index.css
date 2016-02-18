@@ -1,2 +1,6 @@
 #source {
 }
+canvas {
+  position: absolute;
+  opacity: 0;
+}
