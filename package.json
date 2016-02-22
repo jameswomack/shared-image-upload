@@ -1,6 +1,6 @@
 {
   "name": "shared-image-upload",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha.0",
   "description": "Upload an image from one device and view it on another in \"real time\"",
   "main": "index.js",
   "scripts": {
