@@ -38,7 +38,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         if (this.shouldDraw) {
           this.context.clearRect(0, 0, this.context.canvas.width, this.context.canvas.height);
           var height = 600;
-
           var widthFactor = this.image.height / height;
           this.context.drawImage(this.image, 0, 0, this.image.width, this.image.height, 0, 0, this.image.width / widthFactor, height);
           this.previousSrc = this.image.src;
