@@ -38,13 +38,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         if (this.shouldDraw) {
           this.context.clearRect(0, 0, this.context.canvas.width, this.context.canvas.height);
           var height = 600;
-          var widthFactor = this.image.height / height;
-          this.context.drawImage(this.image, 0, 0, this.image.width, this.image.height, 0, 0, this.image.width / widthFactor, height);
+          var widthFactor = this.image.naturalHeight / height;
+          this.context.drawImage(this.image, 0, 0, this.image.naturalWidth, this.image.naturalHeight, 0, 0, this.image.width, height);
           this.previousSrc = this.image.src;
 
           if (this.image.src === window.location.href || !this.image.width) return;
 
-          var imageData = this.context.getImageData(0, 0, this.image.width / widthFactor, height);
+          var imageData = this.context.getImageData(0, 0, this.image.width, height);
           var hslValues = hslToColor(hslValuesFromContext(imageData));
           circlePack('svg#circlePack', hslValues);
         }

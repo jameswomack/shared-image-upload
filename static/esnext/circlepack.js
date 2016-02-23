@@ -2,8 +2,8 @@ function circlePack(selectionID, data) {
     var packChart, packG;
 
     d3.select(selectionID)
-      .attr("height", 2400)
-      .attr("width", 1200)
+      .attr("height", 1840)
+      .attr("width", 900)
      // .style("background", "white");
 
     var hScale = function(d) {return Math.round(d / 15)};
@@ -63,8 +63,7 @@ function circlePack(selectionID, data) {
         var d = nestedData.filter(p => p.key === authColor)[0];
         if (d) {
           var total = d3.sum(d.values.map(p => d3.sum(p.values.map(q => q.value))))
-          var packSize = total / max * 400;
-          packSize = 400
+          var packSize = 280
 
           packChart = d3.layout.pack();
           packChart.size([packSize,packSize])
@@ -89,10 +88,10 @@ function circlePack(selectionID, data) {
         .enter()
         .append("g")
         .attr("class", colorAuthority[packedIndex])
-        .attr("transform", "translate(" + ((packedIndex%3 * 400)) + "," + ((Math.floor(packedIndex/3) * 400) + 1200) + ")")
+        .attr("transform", "translate(" + ((packedIndex%3 * 300)) + "," + ((Math.floor(packedIndex/3) * 320) + 840) + ")")
         .append("text")
-        .attr("y", 20)
-        .attr("x", 200)
+        .attr("y", 0)
+        .attr("x", 150)
         .style("font-size", "20px")
         .style("text-anchor", "middle")
         .text(colorAuthority[packedIndex])
@@ -111,8 +110,8 @@ function circlePack(selectionID, data) {
         .style("stroke",
           function(d){
 
-            if (d.rl == 0){
-              return "white"
+            if (d.rl == 5){
+              return "gray"
             }
             return "";
           }
@@ -139,7 +138,7 @@ function circlePack(selectionID, data) {
   //Do it again for the regular chart
 
       packChart = d3.layout.pack();
-      packChart.size([1200,1200])
+      packChart.size([800,800])
         .children(function(d) {return d.values})
         .value(function(d) {return d.value});
 
@@ -150,14 +149,15 @@ function circlePack(selectionID, data) {
       .data([0])
       .enter()
       .append("g")
+      .attr('transform', 'translate(50,0)')
       .attr("class", "overall")
       .append("line")
       .style("stroke", "gray")
       .style("stroke-width", "1px")
       .attr("x1", 0)
-      .attr("x2", 1200)
-      .attr("y1", 1200)
-      .attr("y2", 1200);
+      .attr("x2", 800)
+      .attr("y1", 800)
+      .attr("y2", 800);
 
       packG = d3.select(selectionID).select("g.overall");
 
@@ -172,8 +172,8 @@ function circlePack(selectionID, data) {
       .style("fill", fillCircle2Level)
       .style("stroke",
         function(d){
-          if (d.rl == 0){
-            return "white"
+          if (d.rl == 5){
+            return "gray"
           }
           return "";
         }
