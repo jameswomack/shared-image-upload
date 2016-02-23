@@ -11,14 +11,14 @@ function hslToColor(hslArray) {
           d.group = "yellow";
       } else if (hue < 164){
           d.group = "green";
-      } else if (hue < 203){
-          d.group = "cyan";
-      } else if (hue < 262){
+      // } else if (hue < 203){
+      //     d.group = "cyan";
+      } else if (hue < 252){ //262
           d.group = "blue";
-      } else if (hue < 299){
+      } else if (hue < 337){ //299
           d.group = "purple";
-      } else if (hue < 337){
-          d.group = "magenta";
+      // } else if (hue < 337){
+      //     d.group = "magenta";
       } else {
           d.group = "red";
       }

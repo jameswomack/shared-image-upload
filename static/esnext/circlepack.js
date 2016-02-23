@@ -2,7 +2,7 @@ function circlePack(selectionID, data) {
     var packChart, packG;
 
     d3.select(selectionID)
-      .attr("height", 1840)
+      .attr("height", 1540)
       .attr("width", 900)
      // .style("background", "white");
 
@@ -57,7 +57,7 @@ function circlePack(selectionID, data) {
 
 
       var max = d3.max(nestedData.map(d => d3.sum(d.values.map(p => d3.sum(p.values.map(q => q.value))))))
-      var colorAuthority = ["red","orange","yellow","green","cyan","blue","purple","magenta","red"]
+      var colorAuthority = ["red","orange","yellow","green","blue","purple","red"]
 
       colorAuthority.forEach(authColor => {
         var d = nestedData.filter(p => p.key === authColor)[0];
